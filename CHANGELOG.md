@@ -8,6 +8,7 @@
 
 ## Changes since v7.1.3
 
+- [#1060](https://github.com/oauth2-proxy/oauth2-proxy/pull/1060) Implement RewriteTarget to allow requests to be rewritten before proxying to upstream servers (@JoelSpeed)
 - [#1142](https://github.com/oauth2-proxy/oauth2-proxy/pull/1142) Add pagewriter to upstream proxy (@JoelSpeed)
 - [#1181](https://github.com/oauth2-proxy/oauth2-proxy/pull/1181) Fix incorrect `cfg` name in show-debug-on-error flag (@iTaybb)
 
