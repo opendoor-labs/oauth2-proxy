@@ -130,6 +130,7 @@ func Validate(o *options.Options) error {
 			o.SetOIDCVerifier(provider.Verifier(&oidc.Config{
 				ClientID:        o.Providers[0].ClientID,
 				SkipIssuerCheck: o.Providers[0].OIDCConfig.InsecureSkipIssuerVerification,
+				SkipExpiryCheck: true,
 			}))
 
 			o.Providers[0].LoginURL = provider.Endpoint().AuthURL
@@ -369,8 +370,7 @@ func parseJwtIssuers(issuers []string, msgs []string) ([]jwtIssuer, []string) {
 // a verifier for that issuer.
 func newVerifierFromJwtIssuer(jwtIssuer jwtIssuer) (*oidc.IDTokenVerifier, error) {
 	config := &oidc.Config{
-		ClientID:        jwtIssuer.audience,
-		SkipExpiryCheck: true,
+		ClientID: jwtIssuer.audience,
 	}
 	// Try as an OpenID Connect Provider first
 	var verifier *oidc.IDTokenVerifier
